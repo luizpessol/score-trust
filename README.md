@@ -74,6 +74,7 @@ O score final é limitado a **100 pontos** e categorizado conforme o intervalo d
     "País de origem não é Brasil"
   ]
 }
+```
 
 🔐 Segurança
 Integração com WAF e validações na borda
