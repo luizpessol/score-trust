@@ -111,4 +111,12 @@ A solução foi desenhada para ser modular e expansível (ex: Face Liveness, rea
 - Módulo de aprendizado contínuo para ajuste automático de pesos
 
 ## 👨‍💻 Autor
-`Desenvolvido por:` Adrian Wicke, Ana Carolina, Camille, Demetrio Paszko e Luiz Pessol. 
+`Desenvolvido por:` Adrian Wicke, Ana Carolina, Camille, Demetrio Paszko e Luiz Pessol.
+
+---
+
+## 📄 Licença
+
+Uso interno e demonstração. Para uso comercial, consulte a equipe do projeto Score Trust.
+
+--- 
