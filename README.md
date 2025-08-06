@@ -76,39 +76,39 @@ O score final é limitado a **100 pontos** e categorizado conforme o intervalo d
 }
 ```
 
-🔐 Segurança
-Integração com WAF e validações na borda
+## 🔐 Segurança
+- Integração com WAF e validações na borda
 
-Score configurável sem alterar o código (via DynamoDB)
+- Score configurável sem alterar o código (via DynamoDB)
 
-TTL automático para eventos (7 dias por padrão)
+- TTL automático para eventos (7 dias por padrão)
 
-Requisições limitadas ao SDK e Dashboard autenticados
+- Requisições limitadas ao SDK e Dashboard autenticados
 
-🚀 Tecnologias Utilizadas
-AWS Lambda
+## 🚀 Tecnologias Utilizadas
+- AWS Lambda
 
-API Gateway
+- API Gateway
 
-DynamoDB
+- DynamoDB
 
-AbuseIPDB (external API)
+- AbuseIPDB (external API)
 
-Python 3.x
+- Python 3.x
 
-SDK customizado (externo ao repositório)
+- SDK customizado (externo ao repositório)
 
-📌 Observações
+## 📌 Observações
 Este documentação é apenas da função de backend (score engine).
 
 A solução foi desenhada para ser modular e expansível (ex: Face Liveness, reanálise, alertas).
 
-🧭 Próximos Passos
-Adicionar suporte a geolocalização e análises por dispositivo
+## 🧭 Próximos Passos
+- Adicionar suporte a geolocalização e análises por dispositivo
 
-Integração com serviços de notificação
+- Integração com serviços de notificação
 
-Módulo de aprendizado contínuo para ajuste automático de pesos
+- Módulo de aprendizado contínuo para ajuste automático de pesos
 
-👨‍💻 Autor
-Desenvolvido por Adrian Wicke, Ana Carolina, Camille, Demetrio Paszko e Luiz Pessol. 
+## 👨‍💻 Autor
+`Desenvolvido por:` Adrian Wicke, Ana Carolina, Camille, Demetrio Paszko e Luiz Pessol. 
