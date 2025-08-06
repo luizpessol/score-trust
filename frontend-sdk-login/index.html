@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Simulado - NexShop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="sdk.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body, html {
+      height: 100%;
+      background-color: #0e0e0e;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+      width: 100%;
+    }
+
+    .form-side {
+      flex: 1;
+      background-color: #0e0e0e;
+      padding: 80px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .form-side h2 {
+      font-size: 36px;
+      margin-bottom: 40px;
+    }
+
+    label {
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 10px;
+      background: #111;
+      border-radius: 12px;
+      border: 2px solid transparent;
+      color: #fff;
+      font-size: 15px;
+      transition: border 0.3s;
+    }
+
+    input:focus {
+      outline: none;
+      border-image: linear-gradient(90deg, #ffcc70, #c850c0) 1;
+    }
+
+    .error-msg {
+      color: #ff6b6b;
+      font-size: 14px;
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    .btn {
+      padding: 14px;
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(to right, #8756ff, #d16ba5, #fbc87a);
+      color: #fff;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      margin-bottom: 30px;
+      transition: opacity 0.3s;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    .right-side {
+      flex: 1;
+      background-image: url('https://images.unsplash.com/photo-1600377611550-9c834b63b2f2?auto=format&fit=crop&w=1280&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .form-side {
+        padding: 40px 20px;
+      }
+
+      .right-side {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-side">
+      <h2>Login Simulado - NexShop<span style="color:#d16ba5;">.</span></h2>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="usuario@email.com" />
+      <div id="error-message" class="error-msg">O campo de e-mail é obrigatório.</div>
+
+      <button class="btn" onclick="verificarEmail()">Verificar Identidade</button>
+    </div>
+
+    <div class="right-side"></div>
+  </div>
+
+  <script>
+    function verificarEmail() {
+      const email = document.getElementById("email").value.trim();
+      const errorMsg = document.getElementById("error-message");
+
+      if (email === "") {
+        errorMsg.style.display = "block";
+      } else {
+        errorMsg.style.display = "none";
+        sendRiskPayload(email); // chamada à função original
+      }
+    }
+  </script>
+</body>
+</html>
