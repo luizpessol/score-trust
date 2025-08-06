@@ -21,7 +21,7 @@
 
 ## 🧩 Arquitetura
 
-![Arquitetura - Score Trust](./56ace706-2c36-4967-aa67-901294bcf526.png)
+![Arquitetura - Score Trust](img/arquitetura_score_trust.png)
 
 ### Principais componentes:
 
