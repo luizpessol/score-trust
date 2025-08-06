@@ -1,111 +1,93 @@
-📘 Documentação Técnica – Score Trust (Frontend + SDK)
-🔎 Visão Geral
-Esta é a versão pública do Score Trust SDK + Frontend hospedada em um bucket S3. Ela simula um fluxo de login em uma loja virtual (NexShop), coleta dados do navegador e envia um payload para o backend de verificação de risco via REST API.
+# Score Trust – Frontend + SDK
 
-🌐 Frontend
-🛠️ Stack
-HTML5 + CSS3 (inline)
+Este repositório contém a versão pública do frontend e SDK utilizados no MVP da plataforma **Score Trust**, com foco na verificação de identidade de usuários a partir de dados do navegador e device fingerprint. Essa solução é ideal para simulações, POCs e ambientes de demonstração, sendo hospedada em um bucket S3 público.
 
-JavaScript (vanilla)
+---
 
-SDK externo: sdk.js
+## 🌐 Frontend
 
-Hospedagem: Amazon S3 (modo público)
+### 🔧 Tecnologias
 
-Backend de risco: AWS API Gateway + Lambda (endpoint público)
+- HTML5 + CSS3
+- JavaScript (vanilla)
+- SDK externo (`sdk.js`)
+- Hospedagem via Amazon S3
+- Backend de risco em AWS API Gateway + Lambda
 
-🖼️ Interface
-A interface é responsiva e tem um layout dividido em duas colunas:
+### 🖼️ Layout
 
-Esquerda (formulário):
+Interface dividida em duas colunas:
+- Lado esquerdo: formulário com campo de e-mail e botão
+- Lado direito: imagem ilustrativa
+- Responsivo para dispositivos móveis
 
-Campo de e-mail
+---
 
-Botão de “Verificar Identidade”
+## 📦 SDK – `sdk.js`
 
-Direita (imagem ilustrativa):
+### ✨ Principais Funções
 
-Fundo com imagem externa do Unsplash
+#### `generateDeviceHash()`
 
-📂 Arquivos
-index.html – Página principal com UI e script de controle
+Gera uma hash SHA-256 única com base em:
+- `userAgent`
+- `language`
+- `screen resolution`
+- `timezone`
 
-sdk.js – SDK embutido que coleta dados e envia para a API de risco
+#### `sendRiskPayload(email)`
 
-favicon.ico – Ícone do site
-
-📦 SDK – sdk.js
-📋 Funções principais
-🔐 generateDeviceHash()
-Coleta:
-
-userAgent
-
-language
-
-screenSize
-
-timezone
-
-Gera um hash SHA-256 único para o dispositivo
-
-📡 sendRiskPayload(email)
-Monta um payload com:
-
-json
-Copiar
-Editar
-'''
+- Monta o payload com:
+```json
 {
   "email": "usuario@dominio.com",
   "device_name": "...",
   "user_agent": "...",
-  "language": "pt-BR",
-  "timezone": "America/Sao_Paulo",
-  "device_hash": "HASH"
+  "language": "...",
+  "timezone": "...",
+  "device_hash": "..."
 }
-'''
-Envia para:
+```
+- Envia para:
+  ```
+  https://gepy93264h.execute-api.us-east-1.amazonaws.com/prod/identity/verify
+  ```
+- Exibe `score` e `action` via `alert()`
 
-bash
-Copiar
-Editar
-https://gepy93264h.execute-api.us-east-1.amazonaws.com/prod/identity/verify
-Exibe alerta com o resultado:
+---
 
-✅ allow, review ou deny
+## ⚙️ Fluxo da Aplicação
 
-🔢 score
+1. Usuário digita o e-mail e clica em **"Verificar Identidade"**
+2. Coleta automática de dados do navegador
+3. Envio de requisição POST com payload JSON
+4. API responde com `score` e `action`
+5. Resultado exibido para o usuário
 
-⚠️ Tratamento de Erros
-Mostra alertas em caso de:
+---
 
-Falha HTTP
+## 📁 Estrutura dos Arquivos
 
-Problemas de CORS
+```
+/
+├── index.html       # Página principal com formulário de login simulado
+├── sdk.js           # Script que coleta dados e envia para o backend
+├── favicon.ico      # Ícone da aba do navegador
+```
 
-Erro de rede
+---
 
-⚙️ Fluxo de Execução
-Usuário digita e-mail e clica em "Verificar Identidade"
+## 🚀 Publicação no S3
 
-Chama sendRiskPayload(email)
+1. Criar bucket S3 com acesso público
+2. Ativar static website hosting
+3. Enviar os arquivos
+4. Definir `index.html` como página inicial
 
-SDK coleta os dados automaticamente
+---
 
-Payload é enviado via fetch() com Content-Type: application/json
+## 📄 Licença
 
-Backend retorna score e action
+Uso interno e demonstração. Para uso comercial, consulte a equipe do projeto Score Trust.
 
-Exibe resultado na tela via alert()
-
-📌 Observações Técnicas
-Nenhuma dependência externa além da Web Crypto API (crypto.subtle)
-
-Funciona em browsers modernos com suporte a fetch, crypto, Intl
-
-A hash do dispositivo ajuda na identificação sem cookies
-
-Ideal para MVPs ou PoCs
-
-Pode ser facilmente embutido em sites de terceiros
+---
