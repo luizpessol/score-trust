@@ -92,4 +92,3 @@ def update_rule_weight(data):
     except Exception as e:
         return {"statusCode": 400, "body": json.dumps({"error": str(e)})}
 
-teste

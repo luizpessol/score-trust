@@ -143,5 +143,5 @@ Define o peso (influência) de cada regra para cálculo dinâmico do score final
 ## 📄 Licença
 
 Uso interno e demonstração. Para uso comercial, consulte a equipe do projeto Score Trust.
-teste
+
 --- 
