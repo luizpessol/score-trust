@@ -1,0 +1,355 @@
+type: collection.insomnia.rest/5.0
+name: Scratch Pad
+meta:
+  id: wrk_scratchpad
+  created: 1730405004712
+  modified: 1730405004712
+  description: ""
+collection:
+  - name: Score Trust
+    meta:
+      id: fld_134343d9d1ec4e75b0a9a77685dfb826
+      created: 1755105540959
+      modified: 1755105540959
+      sortKey: -1755105540959
+      description: ""
+    children:
+      - name: RiskEgine
+        meta:
+          id: fld_c7de2d8de07b4ec799d79a2f46b197fc
+          created: 1745887137393
+          modified: 1755105565186
+          sortKey: -1755105549617
+          description: ""
+        children:
+          - url: https://gepy93264h.execute-api.us-east-1.amazonaws.com/prod/identity/verify
+            name: Teste 1 - Usuário Confiável (ALLOW)
+            meta:
+              id: req_503606e6f9e84211a5bf0aad100010b2
+              created: 1745887276929
+              modified: 1755105261369
+              isPrivate: false
+              description: ""
+              sortKey: -1745887282581
+            method: POST
+            body:
+              mimeType: application/json
+              text: >
+                {
+                  "email": "cliente@email.com",
+                  "device_name": "iPhone 14",
+                  "ip_address": "186.222.45.67",
+                  "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X)",
+                  "timezone": "America/Sao_Paulo",
+                  "language": "pt-BR"
+                }
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: https://gepy93264h.execute-api.us-east-1.amazonaws.com/prod/identity/verify
+            name: Teste 2 - Usuário Suspeito (REVIEW)
+            meta:
+              id: req_fc98779362d040548383e2c357f51649
+              created: 1745887276931
+              modified: 1755105286907
+              isPrivate: false
+              description: ""
+              sortKey: -1745887282681
+            method: POST
+            body:
+              mimeType: application/json
+              text: |+
+                {
+                  "email": "suspeito@teste.com",
+                  "device_name": "Samsung Galaxy",
+                  "ip_address": "186.222.45.67",
+                  "user_agent": "Mozilla/5.0 (Linux; Android 10; SM-A107F)",
+                  "timezone": "America/Sao_Paulo",
+                  "language": "en-US"
+                }
+
+            authentication:
+              type: none
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: https://gepy93264h.execute-api.us-east-1.amazonaws.com/prod/identity/verify
+            name: Teste 3 - Usuário Muito Suspeito (DENY)
+            meta:
+              id: req_02c21ff28ee24e499c1316720482f6e3
+              created: 1745887276933
+              modified: 1755105304957
+              isPrivate: false
+              description: ""
+              sortKey: -1745887282781
+            method: POST
+            body:
+              mimeType: application/json
+              text: >
+                {
+                  "email": "hacker@darkweb.com",
+                  "device_name": "UnknownDevice",
+                  "ip_address": "10.0.0.1",
+                  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) HeadlessChrome/99.0.4844.51",
+                  "timezone": "Europe/London",
+                  "language": "en-GB"
+                }
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: API getRiskEvents
+        meta:
+          id: fld_a20700d2f316461ba53e243f54add26b
+          created: 1754570758140
+          modified: 1755105555461
+          sortKey: -1755105549517
+          description: ""
+        children:
+          - url: https://rxche3i5a1.execute-api.us-east-1.amazonaws.com/prod/getRiskEvents?limit=10&email=luizpessol@hotmail.com
+            name: Consulta eventos por email
+            meta:
+              id: req_ebd0e618b01143469b7a1466cda572d4
+              created: 1754572100521
+              modified: 1755218496019
+              isPrivate: false
+              description: ""
+              sortKey: -1754572100521
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.4.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: https://rxche3i5a1.execute-api.us-east-1.amazonaws.com/prod/getRiskEvents?limit=10&score_min=40
+            name: Consulta eventos por score
+            meta:
+              id: req_abfc2072c6cd4b9983bd6871c04c36b0
+              created: 1755218429475
+              modified: 1755218487117
+              isPrivate: false
+              description: ""
+              sortKey: -1755218429475
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.4.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: https://rxche3i5a1.execute-api.us-east-1.amazonaws.com/prod/getRiskEvents?limit=10&from_date=2025-08-01T00:00:00Z
+            name: Consulta eventos por data
+            meta:
+              id: req_7dda0e0316654b76876dd3fa0897f1e0
+              created: 1755218547276
+              modified: 1755218595693
+              isPrivate: false
+              description: ""
+              sortKey: -1755218547276
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.4.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: https://rxche3i5a1.execute-api.us-east-1.amazonaws.com/prod/getRiskEvents?limit=10&country=BR
+            name: Consulta eventos por País
+            meta:
+              id: req_f92b3e908b5643f3a2ce267148601e0a
+              created: 1755218602629
+              modified: 1755218640460
+              isPrivate: false
+              description: ""
+              sortKey: -1755218602629
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.4.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: https://rxche3i5a1.execute-api.us-east-1.amazonaws.com/prod/getRiskEvents?limit=10&action=REVIEW
+            name: Consulta eventos por ação
+            meta:
+              id: req_f84d72ae024d46aa99bfc82890c599a4
+              created: 1755218653596
+              modified: 1755218715121
+              isPrivate: false
+              description: ""
+              sortKey: -1755218653596
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.4.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: risk-admin-api
+        meta:
+          id: fld_163bd0db7b504517a363ccac7b7c5619
+          created: 1755044548900
+          modified: 1755105549479
+          sortKey: -1755105549417
+          description: ""
+        children:
+          - url: https://r4pfny9sp0.execute-api.us-east-1.amazonaws.com/prod/getRuleWeights
+            name: Consulta Peso das Regras
+            meta:
+              id: req_fa8180e377f34bb78a8f2684d339df65
+              created: 1755044582709
+              modified: 1755046122767
+              isPrivate: false
+              description: ""
+              sortKey: -1755044582709
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.4.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: https://r4pfny9sp0.execute-api.us-east-1.amazonaws.com/prod/getScoringRules
+            name: Consulta valores das ações
+            meta:
+              id: req_da1e4a54ba1c4c4ca5de4a97d92bc596
+              created: 1755046145754
+              modified: 1755046236769
+              isPrivate: false
+              description: ""
+              sortKey: -1755046145754
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.4.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: https://r4pfny9sp0.execute-api.us-east-1.amazonaws.com/prod/updateRuleWeight
+            name: Atualiza peso das Regras
+            meta:
+              id: req_6c1b8ce70979499d9b9d20017005af05
+              created: 1755046701781
+              modified: 1755046895634
+              isPrivate: false
+              description: ""
+              sortKey: -1755046701781
+            method: PUT
+            body:
+              mimeType: application/json
+              text: |
+                {
+                  "rule_id": "timezone_inesperado",
+                  "peso": 20
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.4.0
+                id: pair_58abfbdf492446bc979454d0f75a6090
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: https://r4pfny9sp0.execute-api.us-east-1.amazonaws.com/prod/updateScoringRule
+            name: Atualiza os valores das ações
+            meta:
+              id: req_d29cadfe02394c25b96fc3c0f44b3ba1
+              created: 1755046914974
+              modified: 1755091922014
+              isPrivate: false
+              description: ""
+              sortKey: -1755046914974
+            method: PUT
+            body:
+              mimeType: application/json
+              text: |
+                {
+                  "id": "r2",
+                  "min": 31,
+                  "max": 75,
+                  "action": "REVIEW"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.4.0
+                id: pair_7e439e31d423494190f6ebc26d6c45a0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_99d30891da4bdcebc63947a8fc17f076de878684
+    created: 1730405342429
+    modified: 1730405342429
+environments:
+  name: Base Environment
+  meta:
+    id: env_99d30891da4bdcebc63947a8fc17f076de878684
+    created: 1730405342239
+    modified: 1730405342239
+    isPrivate: false
+
