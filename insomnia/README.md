@@ -43,17 +43,28 @@ Se houver variáveis como `{{base_url}}` ou `{{api_key}}`, configure-as:
 ### **1. RiskEngine – Testes de Score de Identidade**
 > Todos enviam requisições `POST` para `/identity/verify`
 
-| Nome | Método | URL | Payload Exemplo |
-|------|--------|-----|-----------------|
-| Teste 1 - Usuário Confiável (ALLOW) | POST | `https://gepy93264h.execute-api.us-east-1.amazonaws.com/prod/identity/verify` | ```json
+| Nome | Método | URL |
+|------|--------|-----|
+| Teste 1 - Usuário Confiável (ALLOW) | POST | https://gepy93264h.execute-api.us-east-1.amazonaws.com/prod/identity/verify |
+| Teste 2 - Usuário Suspeito (REVIEW) | POST | https://gepy93264h.execute-api.us-east-1.amazonaws.com/prod/identity/verify |
+| Teste 3 - Usuário Muito Suspeito (DENY) | POST | https://gepy93264h.execute-api.us-east-1.amazonaws.com/prod/identity/verify |
+
+**Payloads de exemplo:**
+
+**Teste 1 - ALLOW**
+```json
 { "email": "cliente@email.com", "device_name": "iPhone 14", "ip_address": "186.222.45.67", "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X)", "timezone": "America/Sao_Paulo", "language": "pt-BR" }
-``` |
-| Teste 2 - Usuário Suspeito (REVIEW) | POST | idem | ```json
+```
+
+**Teste 2 - REVIEW**
+```json
 { "email": "suspeito@teste.com", "device_name": "Samsung Galaxy", "ip_address": "186.222.45.67", "user_agent": "Mozilla/5.0 (Linux; Android 10; SM-A107F)", "timezone": "America/Sao_Paulo", "language": "en-US" }
-``` |
-| Teste 3 - Usuário Muito Suspeito (DENY) | POST | idem | ```json
+```
+
+**Teste 3 - DENY**
+```json
 { "email": "hacker@darkweb.com", "device_name": "UnknownDevice", "ip_address": "10.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) HeadlessChrome/99.0.4844.51", "timezone": "Europe/London", "language": "en-GB" }
-``` |
+```
 
 ---
 
@@ -62,26 +73,34 @@ Se houver variáveis como `{{base_url}}` ou `{{api_key}}`, configure-as:
 
 | Nome | Método | URL |
 |------|--------|-----|
-| Consulta eventos por email | GET | `https://rxche3i5a1.execute-api.us-east-1.amazonaws.com/prod/getRiskEvents?limit=10&email=luizpessol@hotmail.com` |
-| Consulta eventos por score | GET | `https://rxche3i5a1.execute-api.us-east-1.amazonaws.com/prod/getRiskEvents?limit=10&score_min=40` |
-| Consulta eventos por data | GET | `https://rxche3i5a1.execute-api.us-east-1.amazonaws.com/prod/getRiskEvents?limit=10&from_date=2025-08-01T00:00:00Z` |
-| Consulta eventos por País | GET | `https://rxche3i5a1.execute-api.us-east-1.amazonaws.com/prod/getRiskEvents?limit=10&country=BR` |
-| Consulta eventos por ação | GET | `https://rxche3i5a1.execute-api.us-east-1.amazonaws.com/prod/getRiskEvents?limit=10&action=REVIEW` |
+| Consulta eventos por email | GET | https://rxche3i5a1.execute-api.us-east-1.amazonaws.com/prod/getRiskEvents?limit=10&email=luizpessol@hotmail.com |
+| Consulta eventos por score | GET | https://rxche3i5a1.execute-api.us-east-1.amazonaws.com/prod/getRiskEvents?limit=10&score_min=40 |
+| Consulta eventos por data | GET | https://rxche3i5a1.execute-api.us-east-1.amazonaws.com/prod/getRiskEvents?limit=10&from_date=2025-08-01T00:00:00Z |
+| Consulta eventos por País | GET | https://rxche3i5a1.execute-api.us-east-1.amazonaws.com/prod/getRiskEvents?limit=10&country=BR |
+| Consulta eventos por ação | GET | https://rxche3i5a1.execute-api.us-east-1.amazonaws.com/prod/getRiskEvents?limit=10&action=REVIEW |
 
 ---
 
 ### **3. risk-admin-api – Administração de Regras e Pesos**
 
-| Nome | Método | URL | Payload Exemplo |
-|------|--------|-----|-----------------|
-| Consulta Peso das Regras | GET | `https://r4pfny9sp0.execute-api.us-east-1.amazonaws.com/prod/getRuleWeights` | — |
-| Consulta valores das ações | GET | `https://r4pfny9sp0.execute-api.us-east-1.amazonaws.com/prod/getScoringRules` | — |
-| Atualiza peso das Regras | PUT | `https://r4pfny9sp0.execute-api.us-east-1.amazonaws.com/prod/updateRuleWeight` | ```json
+| Nome | Método | URL |
+|------|--------|-----|
+| Consulta Peso das Regras | GET | https://r4pfny9sp0.execute-api.us-east-1.amazonaws.com/prod/getRuleWeights |
+| Consulta valores das ações | GET | https://r4pfny9sp0.execute-api.us-east-1.amazonaws.com/prod/getScoringRules |
+| Atualiza peso das Regras | PUT | https://r4pfny9sp0.execute-api.us-east-1.amazonaws.com/prod/updateRuleWeight |
+| Atualiza os valores das ações | PUT | https://r4pfny9sp0.execute-api.us-east-1.amazonaws.com/prod/updateScoringRule |
+
+**Payloads de exemplo:**
+
+**Atualiza peso das Regras**
+```json
 { "rule_id": "timezone_inesperado", "peso": 20 }
-``` |
-| Atualiza os valores das ações | PUT | `https://r4pfny9sp0.execute-api.us-east-1.amazonaws.com/prod/updateScoringRule` | ```json
+```
+
+**Atualiza os valores das ações**
+```json
 { "id": "r2", "min": 31, "max": 75, "action": "REVIEW" }
-``` |
+```
 
 ---
 
