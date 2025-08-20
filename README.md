@@ -32,8 +32,11 @@
 | **API Gateway**    | Expõe as rotas `/identity/verify` e `/getRiskEvents`                   |
 | **Lambda**         | Lógica de cálculo e persistência do score                              |
 | **DynamoDB**       | Armazena regras, pesos, dispositivos e eventos                         |
+| **Route 53**       | Registro e gerenciamento do domínio `score-trust.com`                  |
+| **CloudWatch**     | Registro de todos os Logs                                              |
+| **IAM**            | Gerenciamento de identidade dos usuários AWS                           |
 | **AbuseIPDB API**  | Verifica reputação de IPs públicos                                     |
-| **Dashboard**      | Interface administrativa para consulta de eventos                      |
+| **Dashboard**      | Interface administrativa para consulta de eventos e update de regras   |
 
 ---
 
@@ -77,26 +80,36 @@ O score final é limitado a **100 pontos** e categorizado conforme o intervalo d
 ```
 
 ## 🔐 Segurança
-- Integração com WAF e validações na borda
+- IAM Roles para integração/consumo de recusos AWS
+
+- AWS WAF integrado para validações na borda
+
+- Plano de serviço para mitigação de uso das APIs
+
+- APIs segmentas por tipo de utilização: usuário x administrador
+
+- API Key configurado para consumo dos Planos de serviço/APIs
 
 - Score configurável sem alterar o código (via DynamoDB)
+
+- KMS para criptografia dos dados em repouso
+
+- Certificado SSL para comunição segura
+
+- AWS CloudWatch para consolidação dos Logs
 
 - TTL automático para eventos (7 dias por padrão)
 
 - Requisições limitadas ao SDK e Dashboard autenticados
 
 ## 🚀 Tecnologias Utilizadas
-- AWS Lambda
-
-- API Gateway
-
-- DynamoDB
+- AWS ( API Gateway, Lambda, DynamoDB, Route 53, IAM, CloudWatch, Certificate Manager e WAF
 
 - AbuseIPDB (external API)
 
-- Python 3.x
+- Python 3.13
 
-- SDK customizado (externo ao repositório)
+- SDK customizado em JavaScript (Hospedado no servidor do cliente)
 
 ## 📌 Observações
 Este documentação é apenas da função de backend (score engine).
@@ -104,9 +117,9 @@ Este documentação é apenas da função de backend (score engine).
 A solução foi desenhada para ser modular e expansível (ex: Face Liveness, reanálise, alertas).
 
 ## 🧭 Próximos Passos
-- Adicionar suporte a geolocalização e análises por dispositivo
+- Desenvolvimento de um portal/Dashboard de gerenciamento do serviço
 
-- Integração com serviços de notificação
+- Desenvolvimento do sistema de biometria facial para status `REVIEW`
 
 - Módulo de aprendizado contínuo para ajuste automático de pesos
 
