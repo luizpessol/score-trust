@@ -31,9 +31,12 @@ async function sendRiskPayload(email) {
   };
 
   try {
-    const response = await fetch("https://gepy93264h.execute-api.us-east-1.amazonaws.com/prod/identity/verify", {
+    const response = await fetch("https://api.score-trust.com/identity/verify", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": "DTFu5bcCwjwtilrFuSCG6CDXAZ16wP45jnZpfFn1"
+      },
       body: JSON.stringify(payload)
     });
 
@@ -54,3 +57,4 @@ async function sendRiskPayload(email) {
     return { error: "Erro de comunicação com o Risk Engine" };
   }
 }
+
