@@ -22,12 +22,12 @@ collection:
           sortKey: -1755105549617
           description: ""
         children:
-          - url: https://gepy93264h.execute-api.us-east-1.amazonaws.com/prod/identity/verify
+          - url: https://api.score-trust.com/identity/verify
             name: Teste 1 - Usuário Confiável (ALLOW)
             meta:
               id: req_503606e6f9e84211a5bf0aad100010b2
               created: 1745887276929
-              modified: 1755105261369
+              modified: 1755627769486
               isPrivate: false
               description: ""
               sortKey: -1745887282581
@@ -43,6 +43,12 @@ collection:
                   "timezone": "America/Sao_Paulo",
                   "language": "pt-BR"
                 }
+            authentication:
+              type: apikey
+              disabled: false
+              key: x-api-key
+              value: DTFu5bcCwjwtilrFuSCG6CDXAZ16wP45jnZpfFn1
+              addTo: header
             settings:
               renderRequestBody: true
               encodeUrl: true
@@ -51,12 +57,12 @@ collection:
                 send: true
                 store: true
               rebuildPath: true
-          - url: https://gepy93264h.execute-api.us-east-1.amazonaws.com/prod/identity/verify
+          - url: https://api.score-trust.com/identity/verify
             name: Teste 2 - Usuário Suspeito (REVIEW)
             meta:
               id: req_fc98779362d040548383e2c357f51649
               created: 1745887276931
-              modified: 1755105286907
+              modified: 1755627810095
               isPrivate: false
               description: ""
               sortKey: -1745887282681
@@ -74,7 +80,11 @@ collection:
                 }
 
             authentication:
-              type: none
+              type: apikey
+              disabled: false
+              key: x-api-key
+              value: DTFu5bcCwjwtilrFuSCG6CDXAZ16wP45jnZpfFn1
+              addTo: header
             settings:
               renderRequestBody: true
               encodeUrl: true
@@ -83,12 +93,12 @@ collection:
                 send: true
                 store: true
               rebuildPath: true
-          - url: https://gepy93264h.execute-api.us-east-1.amazonaws.com/prod/identity/verify
+          - url: https://api.score-trust.com/identity/verify
             name: Teste 3 - Usuário Muito Suspeito (DENY)
             meta:
               id: req_02c21ff28ee24e499c1316720482f6e3
               created: 1745887276933
-              modified: 1755105304957
+              modified: 1755627814085
               isPrivate: false
               description: ""
               sortKey: -1745887282781
@@ -104,6 +114,12 @@ collection:
                   "timezone": "Europe/London",
                   "language": "en-GB"
                 }
+            authentication:
+              type: apikey
+              disabled: false
+              key: x-api-key
+              value: DTFu5bcCwjwtilrFuSCG6CDXAZ16wP45jnZpfFn1
+              addTo: header
             settings:
               renderRequestBody: true
               encodeUrl: true
@@ -120,12 +136,12 @@ collection:
           sortKey: -1755105549517
           description: ""
         children:
-          - url: https://rxche3i5a1.execute-api.us-east-1.amazonaws.com/prod/getRiskEvents?limit=10&email=luizpessol@hotmail.com
+          - url: https://api.score-trust.com/getRiskEvents?limit=10&email=luizpessol@hotmail.com
             name: Consulta eventos por email
             meta:
               id: req_ebd0e618b01143469b7a1466cda572d4
               created: 1754572100521
-              modified: 1755218496019
+              modified: 1755623824243
               isPrivate: false
               description: ""
               sortKey: -1754572100521
@@ -133,6 +149,12 @@ collection:
             headers:
               - name: User-Agent
                 value: insomnia/11.4.0
+            authentication:
+              type: apikey
+              disabled: false
+              key: x-api-key
+              value: DTFu5bcCwjwtilrFuSCG6CDXAZ16wP45jnZpfFn1
+              addTo: header
             settings:
               renderRequestBody: true
               encodeUrl: true
@@ -141,12 +163,12 @@ collection:
                 send: true
                 store: true
               rebuildPath: true
-          - url: https://rxche3i5a1.execute-api.us-east-1.amazonaws.com/prod/getRiskEvents?limit=10&score_min=40
+          - url: https://api.score-trust.com/getRiskEvents?limit=10&score_min=40
             name: Consulta eventos por score
             meta:
               id: req_abfc2072c6cd4b9983bd6871c04c36b0
               created: 1755218429475
-              modified: 1755218487117
+              modified: 1755626253362
               isPrivate: false
               description: ""
               sortKey: -1755218429475
@@ -154,6 +176,12 @@ collection:
             headers:
               - name: User-Agent
                 value: insomnia/11.4.0
+            authentication:
+              type: apikey
+              disabled: false
+              key: x-api-key
+              value: DTFu5bcCwjwtilrFuSCG6CDXAZ16wP45jnZpfFn1
+              addTo: header
             settings:
               renderRequestBody: true
               encodeUrl: true
@@ -162,12 +190,12 @@ collection:
                 send: true
                 store: true
               rebuildPath: true
-          - url: https://rxche3i5a1.execute-api.us-east-1.amazonaws.com/prod/getRiskEvents?limit=10&from_date=2025-08-01T00:00:00Z
+          - url: https://api.score-trust.com/getRiskEvents?limit=10&from_date=2025-08-01T00:00:00Z
             name: Consulta eventos por data
             meta:
               id: req_7dda0e0316654b76876dd3fa0897f1e0
               created: 1755218547276
-              modified: 1755218595693
+              modified: 1755626256931
               isPrivate: false
               description: ""
               sortKey: -1755218547276
@@ -175,6 +203,12 @@ collection:
             headers:
               - name: User-Agent
                 value: insomnia/11.4.0
+            authentication:
+              type: apikey
+              disabled: false
+              key: x-api-key
+              value: DTFu5bcCwjwtilrFuSCG6CDXAZ16wP45jnZpfFn1
+              addTo: header
             settings:
               renderRequestBody: true
               encodeUrl: true
@@ -183,12 +217,12 @@ collection:
                 send: true
                 store: true
               rebuildPath: true
-          - url: https://rxche3i5a1.execute-api.us-east-1.amazonaws.com/prod/getRiskEvents?limit=10&country=BR
+          - url: https://api.score-trust.com/getRiskEvents?limit=10&country=BR
             name: Consulta eventos por País
             meta:
               id: req_f92b3e908b5643f3a2ce267148601e0a
               created: 1755218602629
-              modified: 1755218640460
+              modified: 1755626262990
               isPrivate: false
               description: ""
               sortKey: -1755218602629
@@ -196,6 +230,12 @@ collection:
             headers:
               - name: User-Agent
                 value: insomnia/11.4.0
+            authentication:
+              type: apikey
+              disabled: false
+              key: x-api-key
+              value: DTFu5bcCwjwtilrFuSCG6CDXAZ16wP45jnZpfFn1
+              addTo: header
             settings:
               renderRequestBody: true
               encodeUrl: true
@@ -204,12 +244,12 @@ collection:
                 send: true
                 store: true
               rebuildPath: true
-          - url: https://rxche3i5a1.execute-api.us-east-1.amazonaws.com/prod/getRiskEvents?limit=10&action=REVIEW
+          - url: https://api.score-trust.com/getRiskEvents?limit=10&action=REVIEW
             name: Consulta eventos por ação
             meta:
               id: req_f84d72ae024d46aa99bfc82890c599a4
               created: 1755218653596
-              modified: 1755218715121
+              modified: 1755626287610
               isPrivate: false
               description: ""
               sortKey: -1755218653596
@@ -217,6 +257,12 @@ collection:
             headers:
               - name: User-Agent
                 value: insomnia/11.4.0
+            authentication:
+              type: apikey
+              disabled: false
+              key: x-api-key
+              value: DTFu5bcCwjwtilrFuSCG6CDXAZ16wP45jnZpfFn1
+              addTo: header
             settings:
               renderRequestBody: true
               encodeUrl: true
@@ -238,7 +284,7 @@ collection:
             meta:
               id: req_fa8180e377f34bb78a8f2684d339df65
               created: 1755044582709
-              modified: 1755046122767
+              modified: 1755628545315
               isPrivate: false
               description: ""
               sortKey: -1755044582709
@@ -246,6 +292,12 @@ collection:
             headers:
               - name: User-Agent
                 value: insomnia/11.4.0
+            authentication:
+              type: apikey
+              disabled: false
+              key: x-api-key
+              value: DTFu5bcCwjwtilrFuSCG6CDXAZ16wP45jnZpfFn1
+              addTo: header
             settings:
               renderRequestBody: true
               encodeUrl: true
@@ -259,7 +311,7 @@ collection:
             meta:
               id: req_da1e4a54ba1c4c4ca5de4a97d92bc596
               created: 1755046145754
-              modified: 1755046236769
+              modified: 1755628538841
               isPrivate: false
               description: ""
               sortKey: -1755046145754
@@ -267,6 +319,12 @@ collection:
             headers:
               - name: User-Agent
                 value: insomnia/11.4.0
+            authentication:
+              type: apikey
+              disabled: false
+              key: x-api-key
+              value: DTFu5bcCwjwtilrFuSCG6CDXAZ16wP45jnZpfFn1
+              addTo: header
             settings:
               renderRequestBody: true
               encodeUrl: true
@@ -280,7 +338,7 @@ collection:
             meta:
               id: req_6c1b8ce70979499d9b9d20017005af05
               created: 1755046701781
-              modified: 1755046895634
+              modified: 1755628534273
               isPrivate: false
               description: ""
               sortKey: -1755046701781
@@ -298,6 +356,12 @@ collection:
               - name: User-Agent
                 value: insomnia/11.4.0
                 id: pair_58abfbdf492446bc979454d0f75a6090
+            authentication:
+              type: apikey
+              disabled: false
+              key: x-api-key
+              value: DTFu5bcCwjwtilrFuSCG6CDXAZ16wP45jnZpfFn1
+              addTo: header
             settings:
               renderRequestBody: true
               encodeUrl: true
@@ -311,7 +375,7 @@ collection:
             meta:
               id: req_d29cadfe02394c25b96fc3c0f44b3ba1
               created: 1755046914974
-              modified: 1755091922014
+              modified: 1755628529239
               isPrivate: false
               description: ""
               sortKey: -1755046914974
@@ -331,6 +395,12 @@ collection:
               - name: User-Agent
                 value: insomnia/11.4.0
                 id: pair_7e439e31d423494190f6ebc26d6c45a0
+            authentication:
+              type: apikey
+              disabled: false
+              key: x-api-key
+              value: DTFu5bcCwjwtilrFuSCG6CDXAZ16wP45jnZpfFn1
+              addTo: header
             settings:
               renderRequestBody: true
               encodeUrl: true

@@ -8,7 +8,7 @@ Este guia descreve como importar e utilizar o arquivo de configuração do **Ins
 
 - **Insomnia** instalado  
   [Baixar aqui](https://insomnia.rest/download)  
-- Arquivo `Insomnia_2025-08-14.yaml` salvo localmente  
+- Arquivo `Insomnia.yaml` salvo localmente  
 - Acesso aos endpoints da API (URLs, chaves ou autenticação necessária)
 
 ---
@@ -17,7 +17,7 @@ Este guia descreve como importar e utilizar o arquivo de configuração do **Ins
 
 1. Abra o **Insomnia**
 2. Vá em **Application → Import → From File**
-3. Selecione o arquivo `Insomnia_2025-08-14.yaml`
+3. Selecione o arquivo `Insomnia.yaml`
 4. Os endpoints serão carregados automaticamente, organizados em pastas
 
 ---
@@ -45,9 +45,9 @@ Se houver variáveis como `{{base_url}}` ou `{{api_key}}`, configure-as:
 
 | Nome | Método | URL |
 |------|--------|-----|
-| Teste 1 - Usuário Confiável (ALLOW) | POST | https://gepy93264h.execute-api.us-east-1.amazonaws.com/prod/identity/verify |
-| Teste 2 - Usuário Suspeito (REVIEW) | POST | https://gepy93264h.execute-api.us-east-1.amazonaws.com/prod/identity/verify |
-| Teste 3 - Usuário Muito Suspeito (DENY) | POST | https://gepy93264h.execute-api.us-east-1.amazonaws.com/prod/identity/verify |
+| Teste 1 - Usuário Confiável (ALLOW) | POST | https://api.score-trust.com/identity/verify |
+| Teste 2 - Usuário Suspeito (REVIEW) | POST | https://api.score-trust.com/identity/verify |
+| Teste 3 - Usuário Muito Suspeito (DENY) | POST | https://api.score-trust.com/identity/verify |
 
 **Payloads de exemplo:**
 
@@ -73,11 +73,11 @@ Se houver variáveis como `{{base_url}}` ou `{{api_key}}`, configure-as:
 
 | Nome | Método | URL |
 |------|--------|-----|
-| Consulta eventos por email | GET | https://rxche3i5a1.execute-api.us-east-1.amazonaws.com/prod/getRiskEvents?limit=10&email=luizpessol@hotmail.com |
-| Consulta eventos por score | GET | https://rxche3i5a1.execute-api.us-east-1.amazonaws.com/prod/getRiskEvents?limit=10&score_min=40 |
-| Consulta eventos por data | GET | https://rxche3i5a1.execute-api.us-east-1.amazonaws.com/prod/getRiskEvents?limit=10&from_date=2025-08-01T00:00:00Z |
-| Consulta eventos por País | GET | https://rxche3i5a1.execute-api.us-east-1.amazonaws.com/prod/getRiskEvents?limit=10&country=BR |
-| Consulta eventos por ação | GET | https://rxche3i5a1.execute-api.us-east-1.amazonaws.com/prod/getRiskEvents?limit=10&action=REVIEW |
+| Consulta eventos por email | GET | https://api.score-trust.com/getRiskEvents?limit=10&email=luizpessol@hotmail.com |
+| Consulta eventos por score | GET | https://api.score-trust.com/getRiskEvents?limit=10&score_min=40 |
+| Consulta eventos por data | GET | https://api.score-trust.com/getRiskEvents?limit=10&from_date=2025-08-01T00:00:00Z |
+| Consulta eventos por País | GET | https://api.score-trust.com/getRiskEvents?limit=10&country=BR |
+| Consulta eventos por ação | GET | https://api.score-trust.com/getRiskEvents?limit=10&action=REVIEW |
 
 ---
 
@@ -85,10 +85,10 @@ Se houver variáveis como `{{base_url}}` ou `{{api_key}}`, configure-as:
 
 | Nome | Método | URL |
 |------|--------|-----|
-| Consulta Peso das Regras | GET | https://r4pfny9sp0.execute-api.us-east-1.amazonaws.com/prod/getRuleWeights |
-| Consulta valores das ações | GET | https://r4pfny9sp0.execute-api.us-east-1.amazonaws.com/prod/getScoringRules |
-| Atualiza peso das Regras | PUT | https://r4pfny9sp0.execute-api.us-east-1.amazonaws.com/prod/updateRuleWeight |
-| Atualiza os valores das ações | PUT | https://r4pfny9sp0.execute-api.us-east-1.amazonaws.com/prod/updateScoringRule |
+| Consulta Peso das Regras | GET | https://api.score-trust.com/getRuleWeights |
+| Consulta valores das ações | GET | https://api.score-trust.com/getScoringRules |
+| Atualiza peso das Regras | PUT | https://api.score-trust.com/updateRuleWeight |
+| Atualiza os valores das ações | PUT | https://api.score-trust.com/updateScoringRule |
 
 **Payloads de exemplo:**
 
