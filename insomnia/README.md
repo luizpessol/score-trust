@@ -1,4 +1,4 @@
-# Utilizando o Insomnia com o arquivo `Insomnia_2025-08-14.yaml`
+# Utilizando o Insomnia com o arquivo `Insomnia.yaml`
 
 Este guia descreve como importar e utilizar o arquivo de configuração do **Insomnia** para testar APIs do projeto **Score Trust**, incluindo testes de score de identidade, consulta de eventos de risco e administração de regras e pesos.
 
