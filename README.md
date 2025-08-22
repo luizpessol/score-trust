@@ -54,6 +54,14 @@ A lógica de score considera diversos pesos configuráveis via tabela `RuleWeigh
 
 O score final é limitado a **100 pontos** e categorizado conforme o intervalo definido em `ScoringRules`.
 
+### Tabela de Peso para cada critério:
+
+![Critérios - Score Trust](img/table_criterios.png)
+
+### Tabela de Peso para cada critério:
+
+![Ações - Score Trust](img/table_acoes.png)
+
 ---
 
 ## 🗃️ Estrutura das Tabelas (DynamoDB)
