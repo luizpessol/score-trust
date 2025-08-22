@@ -29,7 +29,7 @@
 |--------------------|------------------------------------------------------------------------|
 | **E-commerce**     | Cliente que consome o SDK para análise de risco                        |
 | **AWS WAF**        | Proteção contra ataques na borda                                       |
-| **API Gateway**    | Expõe as rotas `/identity/verify` e `/getRiskEvents`                   |
+| **API Gateway**    | Expõe as rotas, exemplo: `/identity/verify` e `/getRiskEvents`         |
 | **Lambda**         | Lógica de cálculo e persistência do score                              |
 | **DynamoDB**       | Armazena regras, pesos, dispositivos e eventos                         |
 | **Route 53**       | Registro e gerenciamento do domínio `score-trust.com`                  |
