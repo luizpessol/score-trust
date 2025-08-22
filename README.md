@@ -54,6 +54,28 @@ A lógica de score considera diversos pesos configuráveis via tabela `RuleWeigh
 
 O score final é limitado a **100 pontos** e categorizado conforme o intervalo definido em `ScoringRules`.
 
+### 📐 Regras e Pesos de Pontuação
+
+| ⚙️ Regra (ID)         | 📝 Descrição                                      | ⚖️ Peso |
+|-----------------------|--------------------------------------------------|--------|
+| useragent_suspeito    | User Agent suspeito (ex: headless browser)       | 50     |
+| device_unknown        | Dispositivo não reconhecido                      | 40     |
+| idioma_nao_pt         | Idioma não típico detectado                      | 10     |
+| timezone_inesperado   | Timezone inesperado                              | 20     |
+| pais_nao_br           | País de origem não é 🇧🇷 Brasil                 | 80     |
+| ip_privado            | IP privado ou suspeito detectado                 | 40     |
+| device_known          | Dispositivo já reconhecido                       | 10     | 
+| abuseipdb_alto        | IP com reputação ruim no AbuseIPDB               | 20     |
+
+### 🧠 Ações baseadas no Score Final
+
+| 🆔 ID | 🎯 Score          | 🔍 Ação sugerida |
+|-------|-------------------|------------------|
+| r1    | 0 - 30            | ✅ Allow         |
+| r2    | 31 - 75           | ⚠️  Review        |
+| r3    | 76 - 100          | 🚫 Deny          |
+
+
 ### Tabela de Peso para cada critério:
 
 ![Critérios - Score Trust](img/table_criterios.png)
