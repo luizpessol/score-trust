@@ -58,7 +58,7 @@ O score final é limitado a **100 pontos** e categorizado conforme o intervalo d
 
 ![Critérios - Score Trust](img/table_criterios.png)
 
-### Tabela de Peso para cada critério:
+### Tabela de Ações:
 
 ![Ações - Score Trust](img/table_acoes.png)
 
