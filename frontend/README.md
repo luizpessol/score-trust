@@ -73,7 +73,7 @@ Para rodar este projeto localmente, siga os passos abaixo:
 
 Este projeto utiliza a API do Score Trust. Você precisará de uma chave de API (`x-api-key`) para que as funcionalidades de análise e dashboard funcionem corretamente.
 
-A chave de API utilizada no projeto é: `5DSXER5tno7m0UiayNXipuAWKqcBg713eppFhNFd`. Certifique-se de que esta chave está configurada corretamente nos arquivos `src/pages/AnalyzePage.jsx` e `src/pages/DashboardPage.jsx`.
+A chave de API utilizada no projeto é: `DTFu5bcCwjwtilrFuSCG6CDXAZ16wP45jnZpfFn1`. Certifique-se de que esta chave está configurada corretamente nos arquivos `src/pages/AnalyzePage.jsx` e `src/pages/DashboardPage.jsx`.
 
 ### Rodando o Projeto
 
