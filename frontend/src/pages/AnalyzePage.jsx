@@ -41,7 +41,7 @@ const sendRiskPayload = async (email) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": "5DSXER5tno7m0UiayNXipuAWKqcBg713eppFhNFd"
+        "x-api-key": "(SOLICITAR TOKEN)"
       },
       body: JSON.stringify(payload)
     });
