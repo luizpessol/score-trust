@@ -19,7 +19,7 @@ const DashboardPage = () => {
       const response = await fetch('https://api.score-trust.com/getRiskEvents', {
         method: 'GET',
         headers: {
-          'x-api-key': '5DSXER5tno7m0UiayNXipuAWKqcBg713eppFhNFd',
+          'x-api-key': '(SOLICITAR TOKEN)',
           'Content-Type': 'application/json'
         }
       });
