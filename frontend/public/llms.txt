@@ -1,0 +1,2 @@
+## Pages
+- [Score Trust - Análise de Risco em Tempo Real para E-commerce](/home): Solução serverless de análise de risco em tempo real para e-commerces. Detecte fraudes instantaneamente com nossa tecnologia avançada de machine learning.
