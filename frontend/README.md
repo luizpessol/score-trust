@@ -3,7 +3,7 @@
 
 ## Visão Geral do Projeto
 
-O Score Trust é uma solução serverless de análise de risco em tempo real, desenvolvida para e-commerces que desejam mitigar fraudes no momento de login ou navegação sensível. A função principal é calcular um `risk score` com base em reputação de IP, características do dispositivo, idioma, timezone e outros sinais comportamentais, permitindo decisões automatizadas como: `ALLOW`, `REVIEW` ou `DENY`.
+Este repositório contém a versão pública do frontend e SDK utilizados no MVP da plataforma Score Trust, com foco na verificação de identidade de usuários a partir de dados do navegador e device fingerprint. Essa solução é ideal para simulações, POCs e ambientes de demonstração.
 
 Este projeto é uma aplicação web moderna e responsiva, construída com React, TailwindCSS e Framer Motion, que demonstra as capacidades do Score Trust através de uma interface intuitiva.
 
