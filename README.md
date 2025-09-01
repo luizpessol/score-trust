@@ -4,6 +4,27 @@
 
 ---
 
+# 📌 Sumário do Projeto Score Trust
+
+Este repositório contém os principais componentes do projeto **Score Trust**, organizados nos seguintes diretórios:
+
+## 🔙 Backend
+- [Backend](https://github.com/luizpessol/score-trust/tree/main/backend)  
+  Contém as funções **Lambda**, integrações com o **DynamoDB** e a lógica principal de avaliação de risco.
+
+## 🖥️ Frontend
+- [Frontend](https://github.com/luizpessol/score-trust/tree/main/frontend)  
+  Interface web desenvolvida em **React** para visualização e gerenciamento dos eventos de risco.
+
+## 🧪 Insomnia
+- [Insomnia](https://github.com/luizpessol/score-trust/tree/main/insomnia)  
+  Coleção de requests para testar as APIs do projeto diretamente no **Insomnia**.
+
+## 📦 SDK.js
+- [SDK.js](https://github.com/luizpessol/score-trust/tree/main/sdk)  
+  Biblioteca em **JavaScript** para integração do Score Trust em plataformas externas (ex: e-commerce).
+
+
 ## 🧠 Como funciona?
 
 1. O **e-commerce** utiliza um **SDK** para enviar dados do usuário para a API `/identity/verify`.
