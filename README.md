@@ -46,18 +46,19 @@ Este repositório contém os principais componentes do projeto **Score Trust**, 
 
 ### Principais componentes:
 
-| Componente         | Função                                                                 |
-|--------------------|------------------------------------------------------------------------|
-| **E-commerce**     | Cliente que consome o SDK para análise de risco                        |
-| **AWS WAF**        | Proteção contra ataques na borda                                       |
-| **API Gateway**    | Expõe as rotas, exemplo: `/identity/verify` e `/getRiskEvents`         |
-| **Lambda**         | Lógica de cálculo e persistência do score                              |
-| **DynamoDB**       | Armazena regras, pesos, dispositivos e eventos                         |
-| **Route 53**       | Registro e gerenciamento do domínio `score-trust.com`                  |
-| **CloudWatch**     | Registro de todos os Logs                                              |
-| **IAM**            | Gerenciamento de identidade dos usuários AWS                           |
-| **AbuseIPDB API**  | Verifica reputação de IPs públicos                                     |
-| **Dashboard**      | Interface administrativa para consulta de eventos e update de regras   |
+| Componente               | Função                                                                 |
+|--------------------------|------------------------------------------------------------------------|
+| **E-commerce**           | Cliente que consome o SDK para análise de risco                        |
+| **AWS WAF**              | Proteção contra ataques na borda                                       |
+| **API Gateway**          | Expõe as rotas, exemplo: `/identity/verify` e `/getRiskEvents`         |
+| **Lambda**               | Lógica de cálculo e persistência do score                              |
+| **DynamoDB**             | Armazena regras, pesos, dispositivos e eventos                         |
+| **Route 53**             | Registro e gerenciamento do domínio `score-trust.com`                  |
+| **Certificate Manager**  | Criação e Gerenciamento dos `Certificados SSL` das APIs                |
+| **CloudWatch**           | Registro de todos os Logs                                              |
+| **IAM**                  | Gerenciamento de identidade dos usuários AWS                           |
+| **AbuseIPDB API**        | Verifica reputação de IPs públicos                                     |
+| **Dashboard**            | Interface administrativa para consulta de eventos e update de regras   |
 
 ---
 
