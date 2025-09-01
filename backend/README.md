@@ -1,58 +1,101 @@
-# 📊 Dashboard - Backend Documenção
+# 📌 Documentação Técnica dos Backends (AWS Lambda - Python)
 
-Este documento descreve a arquitetura, as APIs e as funções Lambda que compõem o backend da *ScoreTrust Dashboard*. O sistema foi projetado com foco em segurança, escalabilidade e facilidade de manutenção.
+Este repositório contém os backends do projeto **Score Trust**, implementados em **AWS Lambda** utilizando **Python 3.x** e integrados ao **Amazon API Gateway** e **DynamoDB**.
 
----
-
-## 📐 Arquitetura Geral
-
-```
-Frontend (Dashboard)
-    ⬇️ REST
-AWS API Gateway
-    ⬇️ Invoke
-AWS Lambda (getRiskEvents / risk-admin-api)
-    ⬇️ Query
-DynamoDB (RiskEvents, ScoringRules, RuleWeights)
-```
+Os módulos principais são:
+- 🔹 [RiskEngineEvaluate](#riskengineevaluate) → Motor de cálculo de risco em tempo real.
+- 🔹 [getRiskEvents](#getriskevents) → Consulta de eventos armazenados.
+- 🔹 [risk-admin-api](#risk-admin-api) → Administração de regras e pesos dinâmicos.
 
 ---
 
-## 🔍 API 1: `RiskEventsAPI`
-### ➕ Finalidade
-Permite a consulta de eventos de risco armazenados na tabela `RiskEvents`, com filtros dinâmicos via query string.
+## ⚙️ Arquitetura Geral
 
-### 📌 Endpoint
 ```
-GET https://rxche3i5a1.execute-api.us-east-1.amazonaws.com/prod/getRiskEvents
+SDK.js (frontend/app) 
+     ↓
+API Gateway (custom domain + WAF)
+     ↓
+Lambdas Python:
+   • RiskEngineEvaluate_v0_1
+   • getRiskEvents
+   • risk-admin-api
+     ↓
+DynamoDB Tables:
+   • RiskEvents
+   • ScoringRules
+   • RuleWeights
+   • KnownDevices
 ```
 
-### ✅ Parâmetros de Filtro (queryString)
-- `limit` (padrão: 50): número máximo de eventos retornados.
-- `nextToken`: token de continuação para paginação.
-- `email`: filtra por e-mail do usuário.
-- `score_min`: filtra por score mínimo.
-- `from_date`: ISO8601, retorna eventos a partir dessa data.
-- `country`: filtra por país.
-- `action`: filtra por ação (e.g. allow, deny, review).
+- **AbuseIPDB API** é usada para reputação de IPs.
+- **DynamoDB TTL** Eventos antigos automaticamente 90 dias.
+- **Eventos** são registrados em tempo real e podem ser filtrados via API.
 
-### 🧠 Lambda: `getRiskEvents`
-Responsável por:
-- Construir filtros dinamicamente
-- Paginar resultados via `ExclusiveStartKey`
-- Ordenar por `timestamp` decrescente
-- Tratar `Decimal` para serialização JSON
+---
 
-### 🖥️ Exemplo de resposta
+## 🚀 Backends
+
+### 1️⃣ RiskEngineEvaluate
+Arquivo: `RiskEngineEvaluate_v0_1.py`
+
+- **Responsável por:** Calcular o score de risco e registrar o evento.
+- **Integrações:**
+  - DynamoDB (`RiskEvents`, `ScoringRules`, `RuleWeights`, `KnownDevices`)
+  - AbuseIPDB (verificação de reputação de IPs)
+- **Principais verificações:**
+  - Dispositivo conhecido x desconhecido
+  - Timezone esperado (`America/Sao_Paulo`, `America/Buenos_Aires`)
+  - Idioma (`pt-*`)
+  - User Agent suspeito (headless browsers)
+  - Reputação do IP (AbuseIPDB)
+  - País de origem (≠ BR penalizado)
+
+**Retorno (JSON):**
+```json
+{
+  "score": 65,
+  "action": "REVIEW",
+  "reason": [
+    "Dispositivo não reconhecido",
+    "IP com reputação ruim no AbuseIPDB"
+  ]
+}
+```
+
+---
+
+### 2️⃣ getRiskEvents
+Arquivo: `getRiskEvents.py`
+
+- **Responsável por:** Consultar os eventos gravados em `RiskEvents`.
+- **Filtros suportados (query params):**
+  - `limit` → número máximo de registros (default: 50)
+  - `nextToken` → paginação
+  - `email` → filtrar por usuário
+  - `score_min` → filtrar score mínimo
+  - `from_date` → filtrar eventos a partir de data (ISO8601)
+  - `country` → filtrar por país
+  - `action` → filtrar por ação tomada
+
+**Exemplo de chamada:**
+```
+GET /getRiskEvents?email=user@test.com&score_min=50&action=DENY
+```
+
+**Retorno (JSON):**
 ```json
 {
   "data": [...],
-  "count": 50,
-  "nextToken": "...",
+  "count": 20,
+  "nextToken": null,
   "filters": {
     "limit": 50,
-    "email": "user@exemplo.com",
-    "score_min": 40
+    "email": "user@test.com",
+    "score_min": 50,
+    "from_date": null,
+    "country": null,
+    "action": "DENY"
   },
   "version": "v1"
 }
@@ -60,51 +103,34 @@ Responsável por:
 
 ---
 
-## 🛠️ API 2: `risk-admin-api`
-### ➕ Finalidade
-Permite gerenciar as regras de pontuação (`ScoringRules`) e os pesos (`RuleWeights`) usados pelo sistema de risco.
+### 3️⃣ risk-admin-api
+Arquivo: `risk-admin-api.py`
 
-### 📌 Endpoints
-- `GET /getScoringRules`
-- `PUT /updateScoringRule`
-- `GET /getRuleWeights`
-- `PUT /updateRuleWeight`
+- **Responsável por:** Gerenciar as regras e pesos de pontuação de risco.
+- **Endpoints:**
+  - `GET /getScoringRules` → lista regras de score
+  - `PUT /updateScoringRule` → atualiza regra existente
+  - `GET /getRuleWeights` → lista pesos das regras
+  - `PUT /updateRuleWeight` → atualiza peso de uma regra
 
-### 🌐 URLs completas
+**Exemplo - Atualizar peso de regra:**
 ```
-GET  https://r4pfny9sp0.execute-api.us-east-1.amazonaws.com/prod/getScoringRules
-PUT  https://r4pfny9sp0.execute-api.us-east-1.amazonaws.com/prod/updateScoringRule
-GET  https://r4pfny9sp0.execute-api.us-east-1.amazonaws.com/prod/getRuleWeights
-PUT  https://r4pfny9sp0.execute-api.us-east-1.amazonaws.com/prod/updateRuleWeight
-```
-
-### 🧠 Lambda: `risk-admin-api`
-Responsável por:
-- Roteamento baseado em `path` e `httpMethod`
-- Atualização atômica das regras (`update_item`)
-- Leitura completa (`scan`) com tratamento de `Decimal`
-
-### 📝 Estrutura esperada para PUT
-#### updateScoringRule
-```json
+PUT /updateRuleWeight
 {
-  "id": "rule-login",
-  "min": 0,
-  "max": 30,
-  "action": "allow"
-}
-```
-#### updateRuleWeight
-```json
-{
-  "rule_id": "rule-login",
-  "peso": 25
+  "rule_id": "device_unknown",
+  "peso": 20
 }
 ```
 
----
+**Resposta:**
+```json
+{ "message": "Peso atualizado" }
+```
 
 ## 🗄️ Tabelas DynamoDB
+### `KnownDevices`
+Faz o armazenamento dos hashs de devices conhecidos para um próximo evento, devices não conhecidos recebem 30 pontos.
+
 ### `RiskEvents`
 Armazena os eventos gerados pela API SDK com informações como IP, score, país, dispositivo, etc.
 
@@ -116,16 +142,35 @@ Define o peso (influência) de cada regra para cálculo dinâmico do score final
 
 ---
 
-## 🚀 Observações Técnicas
-- Todos os dados `Decimal` do DynamoDB são convertidos para `int` ou `float` para serialização JSON.
-- A versão atual da API é `v1`, com possibilidade de evoluir futuramente.
-- Permissões da Lambda devem incluir acesso às tabelas via política IAM.
+## 🛠️ Requisitos Técnicos
+
+- **Python:** 3.9+
+- **Dependências AWS:** 
+  - boto3
+- **Variáveis de Ambiente:**
+  - `ABUSEIPDB_API_KEY` → chave da API para reputação de IPs
+
+---
+
+## 📑 Boas Práticas e Observações
+
+- Todos os retornos seguem o padrão JSON com `statusCode`.
+- Logs de erro são enviados para **CloudWatch**.
+- Permissões de IAM devem ser configuradas para:
+  - Leitura/Escrita nas tabelas `RiskEvents`, `ScoringRules`, `RuleWeights`, `KnownDevices`.
+  - Acesso à API externa (AbuseIPDB).
+- Regras e pesos são dinâmicos, facilitando ajustes sem alterar código.
 
 ---
 
 ## 🔒 Segurança
 - Ambas as APIs devem ser protegidas via Cognito ou API Key no ambiente de produção.
 - O backend implementa CORS com `Access-Control-Allow-Origin: *` por padrão.
+- Todo consumo das APIs estão passando por WAF - Web Application Firewall.
+- Para consumo das APIs é necessário uma Key.
+- A chave de consumo deve estar atrelada a um Plano de serviços: Free-Plan & Premium-Plan.
+  - Free-Plan: 15 requisições por dia.
+  - Premium-Plan: 1000 requisições por mês.
 
 ---
 
