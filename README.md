@@ -114,7 +114,7 @@ O score final é limitado a **100 pontos** e categorizado conforme o intervalo d
 
 ---
 
-## 🧩 AFluxo de decisão da aplicação
+## Fluxo de decisão da Aplicação
 
 ![Fluxo de decisão da aplicação](img/fluxo_decisao_score_trust.png)
 
