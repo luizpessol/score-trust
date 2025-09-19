@@ -6,6 +6,7 @@ Os módulos principais são:
 - 🔹 [RiskEngineEvaluate](#riskengineevaluate) → Motor de cálculo de risco em tempo real.
 - 🔹 [getRiskEvents](#getriskevents) → Consulta de eventos armazenados.
 - 🔹 [risk-admin-api](#risk-admin-api) → Administração de regras e pesos dinâmicos.
+- 🔹 [faceVerify](#faceVerify) → Captura e envio da foto para verificação biométrica.
 
 ---
 
@@ -20,6 +21,7 @@ Lambdas Python:
    • RiskEngineEvaluate_v0_1
    • getRiskEvents
    • risk-admin-api
+   • faceVerify
      ↓
 DynamoDB Tables:
    • RiskEvents
