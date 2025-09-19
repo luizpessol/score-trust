@@ -1,6 +1,6 @@
 # Score Trust
 
-**Score Trust** é uma solução serverless de análise de risco em tempo real, desenvolvida para e-commerces que desejam mitigar fraudes no momento de login ou navegação sensível. A função principal é calcular um **risk score** com base em reputação de IP, características do dispositivo, idioma, timezone e outros sinais comportamentais, permitindo decisões automatizadas com validação biometrica facial que pode resultar em ações como: `ALLOW`, `REVIEW` ou `DENY`.
+**Score Trust** é uma solução serverless de análise de risco em tempo real, desenvolvida para e-commerces que desejam mitigar fraudes no momento de login ou navegação sensível. A função principal é calcular um **risk score** com base em reputação de IP, características do dispositivo, idioma, timezone e outros sinais comportamentais, permitindo decisões automatizadas com validação biométrica facial que pode resultar em ações como: `ALLOW`, `REVIEW` ou `DENY`.
 
 ---
 
