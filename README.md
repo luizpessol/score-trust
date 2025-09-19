@@ -158,7 +158,7 @@ O score final é limitado a **100 pontos** e categorizado conforme o intervalo d
 - Requisições limitadas ao SDK e Dashboard autenticados
 
 ## 🚀 Tecnologias Utilizadas
-- AWS ( API Gateway, Lambda, DynamoDB, Route 53, IAM, CloudWatch, Certificate Manager e WAF
+- AWS ( API Gateway, Lambda, DynamoDB, Route 53, IAM, CloudWatch, Certificate Manager, WAF, S3 e Rekognition)
 
 - AbuseIPDB (external API)
 
