@@ -1,6 +1,6 @@
 # Score Trust
 
-**Score Trust** é uma solução serverless de análise de risco em tempo real, desenvolvida para e-commerces que desejam mitigar fraudes no momento de login ou navegação sensível. A função principal é calcular um **risk score** com base em reputação de IP, características do dispositivo, idioma, timezone e outros sinais comportamentais, permitindo decisões automatizadas como: `ALLOW`, `REVIEW` ou `DENY`.
+**Score Trust** é uma solução serverless de análise de risco em tempo real, desenvolvida para e-commerces que desejam mitigar fraudes no momento de login ou navegação sensível. A função principal é calcular um **risk score** com base em reputação de IP, características do dispositivo, idioma, timezone e outros sinais comportamentais, permitindo decisões automatizadas com validação biometrica facial que pode resultar em ações como: `ALLOW`, `REVIEW` ou `DENY`.
 
 ---
 
@@ -34,6 +34,7 @@ Este repositório contém os principais componentes do projeto **Score Trust**, 
    - Dispositivo conhecido
    - Idioma e timezone
    - User-Agent suspeito
+   - Registro e verificação facial
 4. O score é armazenado no **DynamoDB** junto com os detalhes do evento.
 5. A decisão (`ALLOW`, `REVIEW`, `DENY`) é enviada de volta ao cliente.
 6. Administradores podem visualizar eventos na dashboard via `/getRiskEvents`.
@@ -50,7 +51,7 @@ Este repositório contém os principais componentes do projeto **Score Trust**, 
 |--------------------------|------------------------------------------------------------------------|
 | **E-commerce**           | Cliente que consome o SDK para análise de risco                        |
 | **AWS WAF**              | Proteção contra ataques na borda                                       |
-| **API Gateway**          | Expõe as rotas, exemplo: `/identity/verify` e `/getRiskEvents`         |
+| **API Gateway**          | Expõe as rotas, exemplo: `/identity/verify`, `/identity/face-verify` e `/getRiskEvents`         |
 | **Lambda**               | Lógica de cálculo e persistência do score                              |
 | **DynamoDB**             | Armazena regras, pesos, dispositivos e eventos                         |
 | **Route 53**             | Registro e gerenciamento do domínio `score-trust.com`                  |
@@ -73,13 +74,16 @@ A lógica de score considera diversos pesos configuráveis via tabela `RuleWeigh
 - User-Agent com headless/phantom
 - IP com alto score no AbuseIPDB
 - País diferente de BR
+- Registro facial
+- Verificação da biometria facial
 
 O score final é limitado a **100 pontos** e categorizado conforme o intervalo definido em `ScoringRules`.
 
 ### 📐 Regras e Pesos de Pontuação
 
-| ⚙️ Regra (ID)         | 📝 Descrição                                      | ⚖️ Peso |
+| ⚙️ Regra (ID)          | 📝 Descrição                                     | ⚖️ Peso |
 |-----------------------|--------------------------------------------------|--------|
+| face_biometricVerified| Se o biometricVerified = false                   | 25     |
 | useragent_suspeito    | User Agent suspeito (ex: headless browser)       | 50     |
 | device_unknown        | Dispositivo não reconhecido                      | 40     |
 | idioma_nao_pt         | Idioma não típico detectado                      | 10     |
@@ -105,6 +109,12 @@ O score final é limitado a **100 pontos** e categorizado conforme o intervalo d
 - `RiskEvents` — Log de todos os eventos com score, IP, e decisão
 - `RuleWeights` — Pesos atribuídos a cada fator de risco
 - `ScoringRules` — Mapeamento de score para ação (e.g. `0-30 = ALLOW`)
+
+---
+
+## 🧩 AFluxo de decisão da aplicação
+
+![Fluxo de decisão da aplicação](img/fluxo_decisao_score_trust.png)
 
 ---
 
