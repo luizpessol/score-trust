@@ -58,6 +58,8 @@ Este repositório contém os principais componentes do projeto **Score Trust**, 
 | **Certificate Manager**  | Criação e Gerenciamento dos `Certificados SSL` das APIs                |
 | **CloudWatch**           | Registro de todos os Logs                                              |
 | **IAM**                  | Gerenciamento de identidade dos usuários AWS                           |
+| **S3**                   | Armazenamento das imagens/fotos dos usuários                           |
+| **Rekognition**          | CompareFaces para verificação de identidade                            |
 | **AbuseIPDB API**        | Verifica reputação de IPs públicos                                     |
 | **Dashboard**            | Interface administrativa para consulta de eventos e update de regras   |
 
