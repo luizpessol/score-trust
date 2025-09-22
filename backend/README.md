@@ -302,7 +302,7 @@ Define o peso (influência) de cada regra para cálculo dinâmico do score final
 - Todo consumo das APIs estão passando por WAF - Web Application Firewall.
 - Para consumo das APIs é necessário uma Key.
 - A chave de consumo deve estar atrelada a um Plano de serviços: Free-Plan & Premium-Plan.
-  - `Free-Plan:` 15 requisições por dia.
+  - `Free-Plan:` 100 requisições por dia.
   - `Premium-Plan:` 1000 requisições por mês.
 
 ---
