@@ -131,7 +131,7 @@ PUT /updateRuleWeight
 
 ---
 
-###4️⃣ faceVerify
+### 4️⃣ faceVerify
 Arquivo: `faceVericy.py`
 
 Aqui se descreve o fluxo detalhado do **faceVerify** (Lambda de verificação biométrica por imagem) — do recebimento da requisição até a decisão final (**ALLOW** ou **DENY**), incluindo atualizações no **DynamoDB** e interações com **S3** e **Rekognition**.
