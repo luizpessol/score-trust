@@ -3,7 +3,7 @@
 const API_BASE = "https://api.score-trust.com";          // mesmo domínio que você já usa
 const VERIFY_URL = `${API_BASE}/identity/verify`;
 const FACE_VERIFY_URL = `${API_BASE}/identity/face-verify`;
-const API_KEY = "DTFu5bcCwjwtilrFuSCG6CDXAZ16wP45jnZpfFn1"; // já existente
+const API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"; // já existente
 
 // ================== util ==================
 async function generateDeviceHash() {
