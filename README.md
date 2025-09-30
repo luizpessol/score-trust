@@ -182,6 +182,10 @@ A solução foi desenhada para ser modular e expansível (ex: Face Liveness, rea
 `Desenvolvido por:` Adrian Wicke, Ana Carolina, Camille, Demetrio Paszko e Luiz Pessol.
 
 ---
+<a href="https://www.youtube.com/watch?v=zRvRWX1wzE8">
+  <img src="https://img.youtube.com/vi/zRvRWX1wzE8/maxresdefault.jpg" alt="Assista no YouTube" width="800">
+</a>
+---
 
 ## 📄 Licença
 
